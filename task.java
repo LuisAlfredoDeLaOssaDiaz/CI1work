@@ -5,6 +5,8 @@ import java.util.Scanner; // Importacion de libreria para leer teclado
 
 public class task {
     public static void main(String args[]) { // Funcion main
+        float INICIO = System.nanoTime();
+
         int cantidadEstudiantes = 0, pass; // inicializa variables
         String tipoNota[] = { "Parcial", "Quices", "Talleres" }; // Declara array tipo de notas
         Scanner read = new Scanner(System.in); // Se crea la instancia
@@ -16,6 +18,9 @@ public class task {
                                                                   // pass
         mostrarSuccessNoSuccess(pass, cantidadEstudiantes); // Apunta a la funcion mostrarSuccessNoSuccess
 
+        float FIN = System.nanoTime();
+
+        System.out.println("EL PROGRAMA DEMORA EN ENECUTARSE " + (FIN - INICIO) + " NANO SEGUNDOS.");
     }
 
     static int pedirCantidadEstudiantes(int cantidadEstudiantes, Scanner read) {
@@ -137,6 +142,7 @@ public class task {
     }
 
     static void ordenarMaMe(float definitivaEstudiante[], int estudiante[]) {
+        float mayor = 0, menor = 0;
         for(int i=0 ; i < definitivaEstudiante.length ; i++){
             for(int j=0 ; j < definitivaEstudiante.length ; j++){ 
 
@@ -146,14 +152,15 @@ public class task {
                     float aux=definitivaEstudiante[j];
                     definitivaEstudiante[j]=definitivaEstudiante[aux3];
                     definitivaEstudiante[j+1]=aux;
-
+                    
                     int aux2=estudiante[j];
                     estudiante[j]=estudiante[aux3];
                     estudiante[j+1]=aux2;
                 }
             }
         }
-        
+        mayor = definitivaEstudiante[definitivaEstudiante.length-1];
+        menor = definitivaEstudiante[0];
         System.out.println();
         System.out.println("************************************************************");
         System.out.println("Lista Mayor a Menor");
@@ -162,7 +169,9 @@ public class task {
         for (int i = 0; i < estudiante.length; i++) {
             System.out.println("Nota del estudiante [" + estudiante[i] + "]: " + definitivaEstudiante[i]);
         }
-
+        System.out.println("************************************************************");
+        System.out.println("La nota mayor es: " + mayor);
+        System.out.println("La nota menor es: " + menor);
         System.out.println("************************************************************");
 
         
